@@ -1,7 +1,7 @@
 # Created By
- Sam Fellers	 sfellers@purdue.edu\n
- Brian Vervaet  bvervaet@purdue.edu\n
- Max Molnar     molnarm@purdue.edu\n
+ - Sam Fellers	 sfellers@purdue.edu
+ - Brian Vervaet  bvervaet@purdue.edu
+ - Max Molnar     molnarm@purdue.edu
 
 # addBook
  addBook is an interactive address book
