@@ -4,11 +4,12 @@
 	"private": true,
 	"main":	"app.js",
 	"scripts": {
-		"start": "node server.js"
+		"start": "node ./server.js"
 	},
 	"dependencies": {
 		"express": "4.13.x",
-		"cfenv": "1.0.x"
+		"cfenv": "1.0.x",
+		"mongodb": "^2.0.25"
 	},
 	"repository": {},
 	"engines": {
