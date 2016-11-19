@@ -8,7 +8,7 @@
 // for more info, see: http://expressjs.com
 var express = require('express');
 
-var pkg = require('package.json');
+//var pkg = require('package.json');
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
 var cfenv = require('cfenv');
