@@ -1,7 +1,7 @@
 /*eslint-env node*/
 
 
-//var app = require('./app');
+var app = require('./app');
 //lets require/import the mongodb native drivers.
 var mongodb = require('mongodb');
 
