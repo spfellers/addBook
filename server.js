@@ -4,7 +4,8 @@
 // This application uses express as its web server
 // for more info, see: http://expressjs.com
 var express = require('express');
-
+var crypto = require('crypto');
+var mongodb = require('mongodb');
 //var pkg = require('package.json');
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
@@ -19,7 +20,6 @@ app.use(express.static(__dirname + '/public'));
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
 //lets require/import the mongodb native drivers.
-var mongodb = require('mongodb');
 
 var port = 16990;
 
@@ -41,8 +41,49 @@ MongoClient.connect(url, function (err, db) {
     console.log('Connection established to', url);
 	});
     // do some work here with the database.
+	
+    // Get the documents collection
+    var users = db.collection('users');
 
-    //Close connection
-    db.close();
+    //Create some users
+    var user = {name: 'Sam', password: 'password', roles: ['admin', 'user']};
+
+
+    // Insert some users
+    users.insert(user, function (err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
+      }
+      //Close connection
+      db.close();
+    });
+/*
+	// login function
+	exports.manualLogin = function(user, pass, callback){
+		users.findOne({user:user}, function(e, o) {
+			if (o == null){
+				callback('user-not-found');
+			}	else{
+				validatePassword(pass, o.pass, function(err, res) {
+					if (res){
+						callback(null, o);
+					}	else{
+						callback('invalid-password');
+					}
+				});
+			}
+		});
+	}
+
+	//Verifies passhash for user 
+	var validatePassword = function(plainPass, hashedPass, callback){
+		var hash = bcrypt.hashSync(password);
+		console.log("Result from login server: ", res);
+		callback(null, bcrypt.compareSync(user.password, hash));
+	};
+*/
+	
   }
 });
