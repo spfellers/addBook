@@ -1,7 +1,7 @@
 /*eslint-env node*/
 
 
-var app = require('./app');
+//var app = require('./app');
 //lets require/import the mongodb native drivers.
 var mongodb = require('mongodb');
 
@@ -19,11 +19,11 @@ MongoClient.connect(url, function (err, db) {
     console.log('Unable to connect to the mongoDB server. Error:', err);
   } else {
     //HURRAY!! We are connected. :)
-    var server = app.listen(port, function () {
-    	app.set('server', server);
-    	app.set('db', db);
+    //var server = app.listen(port, function () {
+    //	app.set('server', server);
+    //	app.set('db', db);
     console.log('Connection established to', url);
-	});
+	//});
     // do some work here with the database.
 
     //Close connection
