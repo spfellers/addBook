@@ -23,7 +23,7 @@ MongoClient.connect(url, function (err, db) {
     	app.set('server', server);
     	app.set('db', db);
     console.log('Connection established to', url);
-
+	}
     // do some work here with the database.
 
     //Close connection
