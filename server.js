@@ -5,6 +5,8 @@ var app = require('./app');
 //lets require/import the mongodb native drivers.
 var mongodb = require('mongodb');
 
+var port = 16990;
+
 //We need to work with "MongoClient" interface in order to connect to a mongodb server.
 var MongoClient = mongodb.MongoClient;
 
