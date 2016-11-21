@@ -6,6 +6,8 @@
 var express = require('express');
 var crypto = require('crypto');
 var mongodb = require('mongodb');
+var http = require('http');
+var fs = require('fs');
 //var pkg = require('package.json');
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
@@ -59,6 +61,16 @@ MongoClient.connect(url, function (err, db) {
       //Close connection
     //  db.close();
     //});
+	fs.readFileSync('./public/index.html', function (err, html) {
+		if (err) {
+		    throw err; 
+		}       
+		http.createServer(function(request, response) {  
+		    response.writeHeader(200, {"Content-Type": "text/html"});  
+		    response.write(html);  
+		    response.end();  
+		}).listen(port);
+	});
 	
   }
 	db.close();
