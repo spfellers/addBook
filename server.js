@@ -38,27 +38,28 @@ MongoClient.connect(url, function (err, db) {
     var server = app.listen(port, function () {
     	app.set('server', server);
     	app.set('db', db);
-    console.log('Connection established to', url);
+    	console.log('Connection established to', url);
 	});
     // do some work here with the database.
 	
     // Get the documents collection
-    var users = db.collection('users');
+    //var users = db.collection('users');
 
     //Create some users
-    var user = {name: 'Sam', password: 'password', roles: ['admin', 'user']};
+    //var user = {name: 'Sam', password: 'password', roles: ['admin', 'user']};
 
 
     // Insert some users
-    users.insert(user, function (err, result) {
-      if (err) {
-        console.log(err);
-      }else{
-		console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
-      }
+    //users.insert(user, function (err, result) {
+    //  if (err) {
+    //    console.log(err);
+     // }else{
+	//	console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
+     // }
       //Close connection
-      db.close();
-    });
+    //  db.close();
+    //});
 	
   }
+	db.close();
 });
