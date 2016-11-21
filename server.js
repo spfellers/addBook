@@ -42,36 +42,18 @@ MongoClient.connect(url, function (err, db) {
     	app.set('db', db);
     	console.log('Connection established to', url);
 	});
-    // do some work here with the database.
-	
-    // Get the documents collection
-    //var users = db.collection('users');
-
-    //Create some users
-    //var user = {name: 'Sam', password: 'password', roles: ['admin', 'user']};
-
-
-    // Insert some users
-    //users.insert(user, function (err, result) {
-    //  if (err) {
-    //    console.log(err);
-     // }else{
-	//	console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
-     // }
-      //Close connection
-    //  db.close();
-    //});
-	fs.readFileSync('./public/index.html', function (err, html) {
-		if (err) {
-		    throw err; 
-		}       
-		http.createServer(function(request, response) {  
-		    response.writeHeader(200, {"Content-Type": "text/html"});  
-		    response.write(html);  
-		    response.end();  
-		}).listen(port);
-	});
 	
   }
 	db.close();
+});
+
+fs.readFileSync('./public/index.html', function (err, html) {
+	if (err) {
+		throw err; 
+	}       
+	http.createServer(function(request, response) {  
+		   response.writeHeader(200, {"Content-Type": "text/html"});  
+		   response.write(html);  
+		   response.end();  
+	}).listen(port);
 });
