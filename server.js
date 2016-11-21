@@ -47,7 +47,7 @@ MongoClient.connect(url, function (err, db) {
 	db.close();
 });
 
-fs.readFileSync('./public/index.html', function (err, html) {
+fs.readFile('./public/index.html', function (err, html) {
 	if (err) {
 		throw err; 
 	}       
