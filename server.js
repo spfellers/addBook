@@ -55,5 +55,5 @@ fs.readFile('./public/index.html', function (err, html) {
 		   response.writeHeader(200, {"Content-Type": "text/html"});  
 		   response.write(html);  
 		   response.end();  
-	}).listen(port);
+	}).listen(8000);
 });
