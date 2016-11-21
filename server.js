@@ -31,7 +31,24 @@ var MongoClient = mongodb.MongoClient;
 // Connection URL. This is where your mongodb server is running.
 var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:16990/admin?ssl=true';
 
-// Use connect method to connect to the Server
+
+server.listen(appEnv.port, '0.0.0.0', function() {
+  // print a message when the server starts listening
+  console.log("server starting on " + appEnv.url);
+});
+
+fs.readFile('./public/index.html', function (err, html) {
+	if (err) {
+		throw err; 
+	}       
+	http.createServer(function(request, response) {  
+		   response.writeHeader(200, {"Content-Type": "text/html"});  
+		   response.write(html);  
+		   response.end();  
+	}).listen(appEnv.port);
+});
+
+// Use connect method to connect the database to the Server
 MongoClient.connect(url, function (err, db) {
   if (err) {
     console.log('Unable to connect to the mongoDB server. Error:', err);
@@ -45,15 +62,4 @@ MongoClient.connect(url, function (err, db) {
 	
   }
 	db.close();
-});
-
-fs.readFile('./public/index.html', function (err, html) {
-	if (err) {
-		throw err; 
-	}       
-	http.createServer(function(request, response) {  
-		   response.writeHeader(200, {"Content-Type": "text/html"});  
-		   response.write(html);  
-		   response.end();  
-	}).listen(8000);
 });
