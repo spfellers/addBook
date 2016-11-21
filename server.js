@@ -53,37 +53,12 @@ MongoClient.connect(url, function (err, db) {
     users.insert(user, function (err, result) {
       if (err) {
         console.log(err);
-      } else {
-        console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
+      }else{
+		console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
       }
       //Close connection
       db.close();
     });
-/*
-	// login function
-	exports.manualLogin = function(user, pass, callback){
-		users.findOne({user:user}, function(e, o) {
-			if (o == null){
-				callback('user-not-found');
-			}	else{
-				validatePassword(pass, o.pass, function(err, res) {
-					if (res){
-						callback(null, o);
-					}	else{
-						callback('invalid-password');
-					}
-				});
-			}
-		});
-	}
-
-	//Verifies passhash for user 
-	var validatePassword = function(plainPass, hashedPass, callback){
-		var hash = bcrypt.hashSync(password);
-		console.log("Result from login server: ", res);
-		callback(null, bcrypt.compareSync(user.password, hash));
-	};
-*/
 	
   }
 });
