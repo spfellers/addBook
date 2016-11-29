@@ -36,7 +36,7 @@ server.listen(appEnv.port, '0.0.0.0', function() {
   // print a message when the server starts listening
   console.log("server starting on " + appEnv.url);
 });
-
+/*
 fs.readFile('./public/index.html', function (err, html) {
 	if (err) {
 		throw err; 
@@ -63,3 +63,4 @@ MongoClient.connect(url, function (err, db) {
   }
 	db.close();
 });
+*/
