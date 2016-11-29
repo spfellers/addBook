@@ -26,7 +26,7 @@
 						<h1>This is <strong>addBook</strong>, a simple, reliable address book designed by the 1999 76ers<br />
 						</h1>
 						<ul class="icons">
-							<li><a href="#" class="icon style2 fa-address-book fa-3x"><span class="label">Get Started</span></a></li>
+							<li><a href="#address" class="icon style2 fa-address-book fa-3x"><span class="label">Get Started</span></a></li>
 						</ul>
 					</header>
 
@@ -70,25 +70,38 @@
 									</a>
 								</div>
 							</section>
-								<h2>Todo</h2>
+							<div id="address"><a href="address"></a>
 								<div ng-controller="TodoListController as todoList">
-								  <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
-								  [ <a href="" ng-click="todoList.archive()">archive</a> ]
-								  <ul class="unstyled">
-									<li ng-repeat="todo in todoList.todos">
-									  <label class="checkbox">
-										<input type="checkbox" ng-model="todo.done">
-										<span class="done-{{todo.done}}">{{todo.text}}</span>
-									  </label>
-									</li>
-								  </ul>
+								<h1>My Address Book:</h1><h2> {{todoList.names.length}} Contacts</h2>
+									  <table class="table">
+										<input type="table" ng-model="todo.done">
+										   <thead>
+											  <tr>
+												 <th>Name</th>
+												 <th>Address</th>
+												 <th>Phone</th>
+											  </tr>
+										   </thead>
+										   <tbody class="done-{{todo.done}}">
+											  <tr ng-repeat="todo in todoList.names">
+												 <td>{{todo.names}}</td>
+												 <td>{{todo.address}}</td>
+												 <td>{{todo.phone}}</td>
+											  </tr>
+										   </tbody>
+									  </table>
+
 								  <form ng-submit="todoList.addTodo()">
 									<input type="text" ng-model="todoList.todoText"  size="30"
-										   placeholder="add new todo here">
+										   placeholder="add new contact's name here">
+									<input type="text" ng-model="todoList.add"  size="30"
+										   placeholder="add new contact's address here">
+									<input type="text" ng-model="todoList.phone"  size="30"
+										   placeholder="add new contact's phone number here">
 									<input class="btn-primary" type="submit" value="add">
 								  </form>
 								</div>
-
+							</div>
 					</section>
 
 				<!-- Footer -->
