@@ -32,7 +32,7 @@ var MongoClient = mongodb.MongoClient;
 var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:16990/admin?ssl=true';
 
 
-server.listen(appEnv.port, '0.0.0.0', function() {
+app.listen(appEnv.port, '0.0.0.0', function() {
   // print a message when the server starts listening
   console.log("server starting on " + appEnv.url);
 });
