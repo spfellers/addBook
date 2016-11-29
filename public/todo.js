@@ -12,7 +12,7 @@
           {names:'Bob', address:'932 werewr avenue', phone:'473-234-2398', done:false}
 		];
      
-		todoList.addTodo = function() {
+		todoList.addEntry = function() {
 		  todoList.names.push({names:todoList.todoText, address:todoList.add, phone:todoList.phone, done:false});
 		  todoList.todoText = '';
 		  todoList.add = '';
