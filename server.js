@@ -4,11 +4,7 @@
 // This application uses express as its web server
 // for more info, see: http://expressjs.com
 var express = require('express');
-var crypto = require('crypto');
 var mongodb = require('mongodb');
-var http = require('http');
-var fs = require('fs');// Load mongoose package
-var mongoose = require('mongoose');
 //var pkg = require('package.json');
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
