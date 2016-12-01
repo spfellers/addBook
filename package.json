@@ -1,17 +1,18 @@
 {
-	"name": "addBook",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"start": "node server.js"
-	},
-	"dependencies": {
-		"express": "4.13.x",
-		"cfenv": "1.0.x",
-		"mongodb": "^2.0.25"
-	},
-	"repository": {},
-	"engines": {
-		"node": "4.x"
-	} 
+  "name"         : "addBook",
+  "version"      : "0.0.0",
+  "description"  : "Simple addBook application.",
+  "main"         : "server.js",
+  "author"       : "sfellers",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies" : {
+    "body-parser"    : "^1.4.3",
+    "express"        : "^4.13.4",
+    "method-override": "^2.1.3",
+    "mongoose"       : "^4.4.12",
+    "morgan"         : "^1.1.1"
+  }
 }
+
