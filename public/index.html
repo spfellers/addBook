@@ -74,19 +74,20 @@
 								<div ng-controller="TodoListController as todoList">
 								<h1>My Address Book:</h1><h2> {{todoList.names.length}} Contacts</h2>
 									  <table class="table">
-										<input type="table" ng-model="todo.done">
 										   <thead>
 											  <tr>
 												 <th>Name</th>
 												 <th>Address</th>
 												 <th>Phone</th>
+												 <td>Index</td>
 											  </tr>
 										   </thead>
 										   <tbody class="done-{{todo.done}}">
-											  <tr ng-repeat="todo in todoList.names">
+											  <tr ng-repeat="todo in todoList.names" >
 												 <td>{{todo.names}}</td>
 												 <td>{{todo.address}}</td>
 												 <td>{{todo.phone}}</td>
+												 <td>{{todo.index}}</td>
 											  </tr>
 										   </tbody>
 									  </table>
@@ -100,6 +101,10 @@
 										   placeholder="add new contact's phone number here">
 									<input class="btn-primary" type="submit" value="add">
 								  </form>
+
+								<form ng-submit="todoList.deleteEntry()">
+									<input class="btn-primary" type="submit" value="delete">
+								</form>
 								</div>
 							</div>
 					</section>
