@@ -1,126 +1,70 @@
-<!DOCTYPE HTML>
-<!--
-	Visualize by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
-<html ng-app="todoApp">
-	<head>
-		<title>addBook</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<script src="https://use.fontawesome.com/edfcd0be7e.js"></script>
-    	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
-    	<script src="todo.js"></script>
+<!-- index.html -->
+<!doctype html>
 
-	</head>
-	<body>
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="scotchTodo">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    <title>Node/Angular Todo App</title>
 
-				<!-- Header -->
-					<header id="header">
-						<span class="avatar"><img src="images/address-book.jpg" alt="" /></span>
-						<h1>This is <strong>addBook</strong>, a simple, reliable address book designed by the 1999 76ers<br />
-						</h1>
-						<ul class="icons">
-							<li><a href="#address" class="icon style2 fa-address-book fa-3x"><span class="label">Get Started</span></a></li>
-						</ul>
-					</header>
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <style>
+        html                    { overflow-y:scroll; }
+        body                    { padding-top:50px; }
+        #todo-list              { margin-bottom:30px; }
+    </style>
 
-				<!-- Main -->
-					<section id="main">
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+    <script src="core.js"></script>
 
-						<!-- Thumbnails -->
-							<section class="thumbnails">
-								<div>
-									<a href="images/fulls/01.jpg">
-										<img src="images/thumbs/01.jpg" alt="" />
-										<h3>"This Web app is going to be YUGE!"</h3>
-									</a>
-									<a href="images/fulls/02.jpg">
-										<img src="images/thumbs/02.jpg" alt="" />
-										<h3>"Я люблю быть в состоянии найти свой путь назад после того, как 3 дня Бендеры"</h3>
-									</a>
-								</div>
-								<div>
-									<a href="images/fulls/03.jpg">
-										<img src="images/thumbs/03.jpg" alt="" />
-										<h3>"I can't bear using any other address book platform."</h3>
-									</a>
-									<a href="images/fulls/04.jpg">
-										<img src="images/thumbs/04.jpg" alt="" />
-										<h3>"This web app feels good man"</h3>
-									</a>
-									<a href="images/fulls/05.jpg">
-										<img src="images/thumbs/05.jpg" alt="" />
-										<h3>"This app isn't a game. We talkin bout (the use of good coding) practice"</h3>
-									</a>
-								</div>
-								<div>
-									<a href="images/fulls/06.jpg">
-										<img src="images/thumbs/06.jpg" alt="" />
-										<h3>"App is 12/10 H*ckin awesome"</h3>
-									</a>
-									<a href="images/fulls/07.jpg">
-										<img src="images/thumbs/07.jpg" alt="" />
-										<h3>*woof*</h3>
-									</a>
-								</div>
-							</section>
-							<div id="address"><a href="address"></a>
-								<div ng-controller="TodoListController as todoList">
-								<h1>My Address Book:</h1><h2> {{todoList.names.length}} Contacts</h2>
-									  <table class="table">
-										   <thead>
-											  <tr>
-												 <th>Name</th>
-												 <th>Address</th>
-												 <th>Phone</th>
-												 <td>Index</td>
-											  </tr>
-										   </thead>
-										   <tbody class="done-{{todo.done}}">
-											  <tr ng-repeat="todo in todoList.names" >
-												 <td>{{todo.names}}</td>
-												 <td>{{todo.address}}</td>
-												 <td>{{todo.phone}}</td>
-												 <td>{{todo.index}}</td>
-											  </tr>
-										   </tbody>
-									  </table>
+</head>
+<!-- SET THE CONTROLLER AND GET ALL TODOS -->
+<body ng-controller="mainController">
+    <div class="container">
 
-								  <form ng-submit="todoList.addEntry()">
-									<input type="text" ng-model="todoList.todoText"  size="30"
-										   placeholder="add new contact's name here">
-									<input type="text" ng-model="todoList.add"  size="30"
-										   placeholder="add new contact's address here">
-									<input type="text" ng-model="todoList.phone"  size="30"
-										   placeholder="add new contact's phone number here">
-									<input class="btn-primary" type="submit" value="add">
-								  </form>
+        <!-- HEADER AND TODO COUNT -->
+        <div class="jumbotron text-center">
+            <h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
+        </div>
 
-								<form ng-submit="todoList.deleteEntry()">
-									<input class="btn-primary" type="submit" value="delete">
-								</form>
-								</div>
-							</div>
-					</section>
+        <!-- TODO LIST -->
+        <div id="todo-list" class="row">
+            <div class="col-sm-4 col-sm-offset-4">
 
-				<!-- Footer -->
-					<footer id="footer">
-						<p>&copy; AddBook. All rights reserved. Design: <a href="http://templated.co">TEMPLATED</a>.</p>
-					</footer>
+                <!-- LOOP OVER THE TODOS IN $scope.todos -->
+                <div class="checkbox" ng-repeat="todo in todos">
+                    <label>
+                        <input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
+                    </label>
+                </div>
 
-			</div>
+            </div>
+        </div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/main.js"></script>
+        <!-- FORM TO CREATE TODOS -->
+        <div id="todo-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group">
 
-	</body>
+                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                        <input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.text">
+                    </div>
+
+                    <!-- createToDo() WILL CREATE NEW TODOS -->
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</body>
 </html>
+
