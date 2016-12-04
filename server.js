@@ -29,7 +29,7 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
 
     // application -------------------------------------------------------------
     app.get('*', function(req, res) {
-        res.sendFile('./public/index2.html'); // load the single view file (angular will handle the page changes on the front-end)
+        res.sendfile('./public/index2.html'); // load the single view file (angular will handle the page changes on the front-end)
     });
     // listen (start app with node server.js) ======================================
     app.listen(appEnv.port);
@@ -118,10 +118,10 @@ app.post('/contactlist', function (req, res) {
   	name : req.body.name,
     email : req.body.email,
 	number : req.body.number
-  }, function(err, todo) {
+  }, function(err, doc) {
             if (err)
                 res.send(err);
-
+			res.json(doc)
         });
 
   //db.contactlist.insert(req.body, function(err, doc) {
