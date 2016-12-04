@@ -100,13 +100,12 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
     });
 */
 
-    var db = mongoose.model('contactlist',
-        ['contactlist']);
+var db = mongoose.model('contactlist', {name : String, email : String, number : String} );
 
 app.get('/contactlist', function (req, res) {
   console.log('I received a GET request');
 
-  db.contactlist.find(function (err, docs) {
+  db.find(function (err, docs) {
     console.log(docs);
     res.json(docs);
   });
@@ -114,8 +113,8 @@ app.get('/contactlist', function (req, res) {
 
 app.post('/contactlist', function (req, res) {
   console.log("trying to insert into db: ", req.body);
-/*
-  contactlist.create({
+
+  db.create({
   	name : req.body.name,
     email : req.body.email,
 	number : req.body.number
@@ -123,17 +122,11 @@ app.post('/contactlist', function (req, res) {
             if (err)
                 res.send(err);
 
-            // get and return all the todos after you create another
-            contactlist.find(function(err, docs) {
-                if (err)
-                    res.send(err)
-                res.json(docs);
-            });
         });
-*/
-  db.contactlist.insert(req.body, function(err, doc) {
-    res.json(doc);
-  });
+
+  //db.contactlist.insert(req.body, function(err, doc) {
+  //  res.json(doc);
+  //});
 });
 
 app.delete('/contactlist/:id', function (req, res) {
