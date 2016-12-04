@@ -45,7 +45,9 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
 
     // define model =================
     var Todo = mongoose.model('Todo', {
-        text : String
+        names : String,
+		address : String,
+		phone : String
     });
 
 // routes ======================================================================
@@ -70,7 +72,7 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
 
         // create a todo, information comes from AJAX request from Angular
         Todo.create({
-            text : req.body.text,
+            names : req.body.text,
             done : false
         }, function(err, todo) {
             if (err)
