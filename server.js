@@ -118,10 +118,10 @@ app.get('/contactlist', function (req, res) {
 app.post('/contactlist', function (req, res) {
   console.log("trying to insert into db: ", req.body);
   contactlist.create({
-            name : req.body.text,
-            email : req.body.text,
-			number : req.body.text
-        }, function(err, todo) {
+  	name : req.body.name,
+    email : req.body.email,
+	number : req.body.number
+  }, function(err, todo) {
             if (err)
                 res.send(err);
 
