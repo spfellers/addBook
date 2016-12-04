@@ -13,7 +13,7 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
     var morgan = require('morgan');             // log requests to the console (express4)
     var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
     var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
-
+    var cfenv = require('cfenv');
     // configuration =================
 
     mongoose.connect(url);     // connect to mongoDB database on modulus.io
@@ -24,10 +24,15 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
     app.use(bodyParser.json());                                     // parse application/json
     app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
     app.use(methodOverride());
+	var appEnv = cfenv.getAppEnv();
 
+    // application -------------------------------------------------------------
+    app.get('*', function(req, res) {
+        res.sendfile('./public/index3.html'); // load the single view file (angular will handle the page changes on the front-end)
+    });
     // listen (start app with node server.js) ======================================
     app.listen(appEnv.port);
-    console.log("App listening on port ", appEnv.port);
+    console.log("App listening on port ",appEnv.port);
 
 
 
