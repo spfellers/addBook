@@ -26,9 +26,16 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
     app.use(methodOverride());
 	var appEnv = cfenv.getAppEnv();
 
+<<<<<<< HEAD
     // application -------------------------------------------------------------
     app.get('*', function(req, res) {
         res.sendfile('./public/index3.html'); // load the single view file (angular will handle the page changes on the front-end)
+=======
+
+    // application -------------------------------------------------------------
+    app.get('*', function(req, res) {
+        res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+>>>>>>> d9b111c3c76059bf7da9abb23774b532f0fde45b
     });
     // listen (start app with node server.js) ======================================
     app.listen(appEnv.port);
