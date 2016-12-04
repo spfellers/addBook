@@ -100,16 +100,16 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
     });
 */
 
-    var Entry = mongoose.model('Entry', {
-        names : String,
-		address : String,
-		phone : String
+    var contactlist = mongoose.model('contactlist', {
+        name : String,
+		email : String,
+		number : String
     });
 
 app.get('/contactlist', function (req, res) {
   console.log('I received a GET request');
 
-  Entry.find(function (err, docs) {
+  contactlist.find(function (err, docs) {
     console.log(docs);
     res.json(docs);
   });
@@ -117,7 +117,7 @@ app.get('/contactlist', function (req, res) {
 
 app.post('/contactlist', function (req, res) {
   console.log(req.body);
-  Entry.insert(req.body, function(err, doc) {
+  contactlist.insert(req.body, function(err, doc) {
     res.json(doc);
   });
 });
