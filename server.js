@@ -100,9 +100,8 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
     });
 */
 
-    var db = mongoose.model('contactlist', {
-        ['contactlist']
-    });
+    var db = mongoose.model('contactlist',
+        ['contactlist']);
 
 app.get('/contactlist', function (req, res) {
   console.log('I received a GET request');
