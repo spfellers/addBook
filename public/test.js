@@ -1,41 +1,49 @@
-var addBook = angular.module('addBook', []);
+var myApp = angular.module('myApp', []);
+myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
+    console.log("Hello World from controller");
 
-function mainController($scope, $http) {
-    $scope.formData = {};
 
-    // when landing on the page, get all address and show them
-    $http.get('/api/address')
-        .success(function(data) {
-            $scope.address = data;
-            console.log(data);
-        })
-        .error(function(data) {
-            console.log('Error: ' + data);
-        });
+var refresh = function() {
+  $http.get('/contactlist').success(function(response) {
+    console.log("I got the data I requested");
+    $scope.contactlist = response;
+    $scope.contact = "";
+  });
+};
 
-    // when submitting the add form, send the text to the node API
-    $scope.createAddress = function() {
-        $http.post('/api/address', $scope.formData)
-            .success(function(data) {
-                $scope.formData = {}; // clear the form so our user is ready to enter another
-                $scope.address = data;
-                console.log(data);
-            })
-            .error(function(data) {
-                console.log('Error: ' + data);
-            });
-    };
+refresh();
 
-    // delete a todo after checking it
-    $scope.deleteAddress = function(id) {
-        $http.delete('/api/address/' + id)
-            .success(function(data) {
-                $scope.address = data;
-                console.log(data);
-            })
-            .error(function(data) {
-                console.log('Error: ' + data);
-            });
-    };
+$scope.addContact = function() {
+  console.log($scope.contact);
+  $http.post('/contactlist', $scope.contact).success(function(response) {
+    console.log(response);
+    refresh();
+  });
+};
 
+$scope.remove = function(id) {
+  console.log(id);
+  $http.delete('/contactlist/' + id).success(function(response) {
+    refresh();
+  });
+};
+
+$scope.edit = function(id) {
+  console.log(id);
+  $http.get('/contactlist/' + id).success(function(response) {
+    $scope.contact = response;
+  });
+};  
+
+$scope.update = function() {
+  console.log($scope.contact._id);
+  $http.put('/contactlist/' + $scope.contact._id, $scope.contact).success(function(response) {
+    refresh();
+  })
+};
+
+$scope.deselect = function() {
+  $scope.contact = "";
 }
+
+}]);﻿
