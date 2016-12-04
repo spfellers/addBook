@@ -116,10 +116,25 @@ app.get('/contactlist', function (req, res) {
 });
 
 app.post('/contactlist', function (req, res) {
-  console.log(req.body);
-  contactlist.insert(req.body, function(err, doc) {
-    res.json(doc);
-  });
+  console.log("trying to insert into db: ", req.body);
+  contactlist.create({
+            name : req.body.text,
+            email : req.body.text,
+			number : req.body.text
+        }, function(err, todo) {
+            if (err)
+                res.send(err);
+
+            // get and return all the todos after you create another
+            contactlist.find(function(err, docs) {
+                if (err)
+                    res.send(err)
+                res.json(docs);
+            });
+        });
+  //contactlist.insert(req.body, function(err, doc) {
+  //  res.json(doc);
+  //});
 });
 
 app.delete('/contactlist/:id', function (req, res) {
