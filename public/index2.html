@@ -31,7 +31,7 @@
           <td><button class="btn btn-primary" ng-click="addContact()">Add Contact</button></td>
           <td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
         </tr>
-        <tr ng-repeat="contact in db">
+        <tr ng-repeat="contact in contactlist">
           <td>{{contact.name}}</td>
           <td>{{contact.email}}</td>
           <td>{{contact.number}}</td>
