@@ -100,7 +100,7 @@ var contact = {name : String, email : String, number : String} ;
 app.get('/contactlist', function (req, res) {
 	console.log("I got the request");
 	person1 = { name: "test",
-				email = "test@test.com,
+				email = "test@test.com",
 				number = "555-555-5555"
 	};
 	var contactlist = [person1];
