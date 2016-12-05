@@ -5,12 +5,7 @@
   "main"         : "server.js",
   "author"       : "sfellers",
   "scripts": {
-<<<<<<< HEAD
-    "start": "node server.js",
-	mongod"
-=======
-    "start": "node mongod server.js"
->>>>>>> c3899aa2cdb5f81d0480c08210313c2d54cd52c1
+    "start": "node server.js"
   },
   "dependencies" : {
     "body-parser"    : "^1.4.3",
