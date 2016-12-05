@@ -185,7 +185,7 @@ app.put('/contactlist/:id', function (req, res) {
 	  doc.name = req.body.name;
 	  doc.email = req.body.email;
 	  doc.number = req.body.number;
-	  //doc.save(callback);
+	  doc.save(callback);
 	  res.json(doc);
 	});
 });
