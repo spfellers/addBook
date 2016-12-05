@@ -161,28 +161,26 @@ app.delete('/contactlist/:id', function (req, res) {
 	});
 });
 
-/*
+
 app.get('/contactlist/:id', function (req, res) {
   var id = req.params.id;
-  console.log('I received a GET:ID request');
-  console.log(id);
-  //Entry.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
-  //  res.json(doc);
-  //});
+  contactlist.findOne({ _id : id }, function (err, contactlist) {
+		if (err) {
+			console.log("Couldnt find that id");
+		    return;
+		}
+		res.send(id);
+  });
 });
 
 app.put('/contactlist/:id', function (req, res) {
   var id = req.params.id;
   console.log(req.body.name);
- // Entry.findAndModify({
- //   query: {_id: mongojs.ObjectId(id)},
- //   update: {$set: {name: req.body.name, email: req.body.email, number: req.body.number}},
- //   new: true}, function (err, doc) {
- //     res.json(doc);
- //   }
- // );
+	Model.update({ _id : id }, { $set: {   	name : req.body.name, email : req.body.email, number : req.body.number}}, new : true, function (err, doc){
+		res.json(doc);
+	});
 });
 
-*/
+
     app.listen(appEnv.port);
     console.log("App listening on port ",appEnv.port);
