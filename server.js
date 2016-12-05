@@ -147,8 +147,7 @@ app.post('/contactlist', function (req, res) {
 
 app.delete('/contactlist/:id', function (req, res) {
   var id = req.params.id;
-  console.log(id);
-
+  console.log("delete id = " + id);
 	contactlist.findOne({ _id : id }, function (err, contactlist) {
 		if (err) {
 		    return;
