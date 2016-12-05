@@ -101,11 +101,11 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
 */
 
 var contactlist = mongoose.model('contactlist', {name : String, email : String, number : String} );
-
+var test = [{name: sam, email: leqe3o@gmail.com, number: 555-555-5555}];
 app.get('/contactlist', function (req, res) {
 	console.log("get request was made");
 	console.log("request = ", req.body);
-	res.send("hello world");
+	res.send(test);
 });
 
 app.post('/contactlist', function (req, res) {
