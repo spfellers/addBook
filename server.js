@@ -164,12 +164,12 @@ app.delete('/contactlist/:id', function (req, res) {
 
 app.get('/contactlist/:id', function (req, res) {
   var id = req.params.id;
-  contactlist.findOne({ _id : id }, function (err, contactlist) {
+  contactlist.findOne({ _id : id }, function (err, docs) {
 		if (err) {
 			console.log("Couldnt find that id");
 		    return;
 		}
-		res.send(id);
+		res.json(docs);
   });
 });
 
