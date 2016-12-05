@@ -164,6 +164,8 @@ app.delete('/contactlist/:id', function (req, res) {
 
 app.get('/contactlist/:id', function (req, res) {
   var id = req.params.id;
+  console.log("searching for edit id: " + req.params.id);
+  console.log("request params: " + req.params);
   contactlist.findOne({ _id : id }, function (err, docs) {
 		if (err) {
 			console.log("Couldnt find that id");
@@ -175,7 +177,7 @@ app.get('/contactlist/:id', function (req, res) {
 
 app.put('/contactlist/:id', function (req, res) {
   var id = req.params.id;
-  console.log("searching for update id: " + req.body.id);
+  console.log("searching for update id: " + req.params.id);
   contactlist.findOneAndUpdate({_id:id}, {
   	name : req.body.name,
 
