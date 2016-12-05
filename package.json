@@ -6,7 +6,7 @@
   "author"       : "sfellers",
   "scripts": {
     "start": "node server.js",
-	"mongod"
+	mongod"
   },
   "dependencies" : {
     "body-parser"    : "^1.4.3",
