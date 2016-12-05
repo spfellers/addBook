@@ -23,9 +23,11 @@
 	app.use(bodyParser.json());
 	var appEnv = cfenv.getAppEnv();
 
-
+	//create our mongoose model, 3 string parameters for name, email, and phone number
 	var contactlist = mongoose.model('contactlist',  {"name": String ,"email": String ,"number": String} );
 
+
+	//when get requests come to /contactlist, send them a json of all of the contact information in the database
 	app.get('/contactlist', function (req, res) {
 		console.log("I got the request");
 		contactlist.find(function(err, docs) {
@@ -35,32 +37,32 @@
 		});
 	});
 
+	//when post requests come to /contactlist we should be adding a new contact to our database
 	app.post('/contactlist', function (req, res) {
-
+	  //log all of the post data
 	  console.log("trying to insert into db: ", req.body);
 	  console.log("name: ", req.body.name);
 	  console.log("email: ", req.body.email);
 	  console.log("number: ", req.body.number);
 
+	  //create a document to be added to our database using all of the information in the fields
 	  contactlist.create({
 	  	name : req.body.name,
-
 		email : req.body.email,
-
 		number : req.body.number
-
 	  }, function(err, doc) {
 		        if (err){
 		            res.send(err);
 					console.log("error: ", err);
 				}
+		    //return the json with all of this info to guaruntee a "successful" request
 			res.json(doc);
 	   });
 
 	});
 
 
-
+	//when we get a delete request, find the id and delete the corresponding document
 	app.delete('/contactlist/:id', function (req, res) {
 	  var id = req.params.id;
 	  console.log("delete id = " + id);
@@ -77,7 +79,7 @@
 		});
 	});
 
-
+	//when we get a GET request with an id attached to it, bring it into "edit mode"
 	app.get('/contactlist/:id', function (req, res) {
 	  var id = req.params.id;
 	  console.log("searching for edit id: " + req.params.id);
@@ -91,6 +93,7 @@
 	  });
 	});
 
+	//when we get a PUT request with an id attached to it, we are updating that id
 	app.put('/contactlist/:id', function (req, res) {
 	   var id = req.params.id;
 		contactlist.findById(id, function (err, doc) {
@@ -98,6 +101,7 @@
 			console.log("error in update");
 			return;
 		  }
+		  //assign the doc the parameters from the forms in the html, then save it
 		  doc.name = req.body.name;
 		  doc.email = req.body.email;
 		  doc.number = req.body.number;
