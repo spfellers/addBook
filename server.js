@@ -155,6 +155,7 @@ app.delete('/contactlist/:id', function (req, res) {
 		}
 		contactlist.remove(function (err) {
 			console.log("removing id: " + id);
+			res.send(id);
 		    // if no error, your model is removed
 		});
 	});
