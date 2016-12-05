@@ -106,8 +106,10 @@ app.get('/contactlist', function (req, res) {
 	console.log("get request was made");
 	console.log("request = ", req.body);
 	contactlist.find(function(err, list) {
-    	if (err)
+    	if (err){
         	res.send(err);
+			console.log("error: ", err);
+		}
 		res.json(list);
     });
 });
@@ -126,9 +128,11 @@ app.post('/contactlist', function (req, res) {
 	number : req.body.number
 
   }, function(err, doc) {
-            if (err)
+            if (err){
                 res.send(err);
-			res.json(doc)
+				console.log("error: ", err);
+			}
+			res.json(doc);
 			console.log("sent", doc);
         });
 
