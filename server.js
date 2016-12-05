@@ -105,9 +105,13 @@ var contactlist = mongoose.model('contactlist', {name : String, email : String, 
 app.get('/contactlist', function (req, res) {
   console.log('I received a GET request');
 
-  contactlist.find(function (err, docs) {
-    console.log("we are here", docs);
-    res.json(docs);
+  contactlist.find(function (err, users) {
+    var contacts = {};
+		users.forEach(function(user) {
+		  contacts[user._id] = user;
+		});
+		
+    res.send(contacts);
   });
 });
 
