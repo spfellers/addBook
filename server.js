@@ -112,6 +112,7 @@ var contactlist = [person1, person2, person3];
 */
 app.get('/contactlist', function (req, res) {
 	console.log("I got the request");
+	
 	res.json(contactlist);
 /*
 	contactlist.find(function(err, contactlists) {
@@ -144,14 +145,19 @@ app.post('/contactlist', function (req, res) {
                 res.send(err);
 				console.log("error: ", err);
 			}
-			res.json(doc);
-			console.log("sent", doc);
+			contactlist.find(function(err, docs) {
+				if (err)
+					console.log("error", err);
+				res.json(docs);
+				console.log("sent", dosc);
+			});
         });
 
   //db.contactlist.insert(req.body, function(err, doc) {
   //  res.json(doc);
   //});
 });
+
 /*
 app.delete('/contactlist/:id', function (req, res) {
   var id = req.params.id;
