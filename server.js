@@ -180,17 +180,13 @@ app.put('/contactlist/:id', function (req, res) {
   console.log("searching for update id: " + req.params.id);
   contactlist.findOneAndUpdate({ _id : id }, {$set:{
   	name : req.body.name,
-
     email : req.body.email,
-
 	number : req.body.number
-
-  }}, function (err, docs) {
+  }}, {new : true}, function (err, docs) {
 			if (err) {
 				console.log("Couldnt find that id");
-				return;
 			}
-  			res.json(docs);
+  		res.json(docs);
   });
 });
 
