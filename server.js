@@ -115,12 +115,14 @@ app.post('/contactlist', function (req, res) {
   console.log("email: ", req.body.email);
   console.log("number: ", req.body.number);
 
-  contactlist.contact.create({
+  contactlist.create({ contact: {
   	name : req.body.name,
 
     email : req.body.email,
 
 	number : req.body.number
+
+	}
 
   }, function(err, doc) {
             if (err){
