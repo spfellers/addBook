@@ -186,7 +186,7 @@ app.put('/contactlist/:id', function (req, res) {
 	  doc.email = req.body.email;
 	  doc.number = req.body.number;
 	  doc.save(function (err) {
-  		if (err) return handleError(err);
+  		if (err) return console.log(err);
   		// saved!
 		});
 	  res.json(doc);
