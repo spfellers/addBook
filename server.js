@@ -174,8 +174,5 @@ app.put('/contactlist/:id', function (req, res) {
 });
 
 */
-    app.get('*', function(req, res) {
-        res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-    });
     app.listen(appEnv.port);
     console.log("App listening on port ",appEnv.port);
