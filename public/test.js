@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> 202cd011c81ddf5a09d5d4b6aa1a47c1852b83f5
 var myApp = angular.module('myApp', []);
 myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     console.log("Hello World from controller");
