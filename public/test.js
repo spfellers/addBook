@@ -5,9 +5,7 @@ var myApp = angular.module('myApp', []);
 myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     console.log("Hello World from controller");
 
-
 var refresh = function() {
-console.log("HELLO I AM IN REFRESH");
   $http.get('/contactlist').success(function(response) {
     console.log("HELLO I AM IN REFRESH");
     $scope.contactlist = response;
@@ -18,7 +16,6 @@ console.log("HELLO I AM IN REFRESH");
 refresh();
 
 $scope.addContact = function() {
-	console.log("HELLO I AM IN ADDCONTACT");
   console.log($scope.contact);
   $http.post('/contactlist', $scope.contact).success(function(response) {
 	console.log("HELLO I AM IN ADDCONTACT");

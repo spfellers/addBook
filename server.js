@@ -113,15 +113,22 @@ app.get('/contactlist', function (req, res) {
 
 app.post('/contactlist', function (req, res) {
   console.log("trying to insert into db: ", req.body);
+  console.log("name: ", req.body.name);
+  console.log("email: ", req.body.email);
+  console.log("number: ", req.body.number);
 
   contactlist.create({
   	name : req.body.name,
+
     email : req.body.email,
+
 	number : req.body.number
+
   }, function(err, doc) {
             if (err)
                 res.send(err);
 			res.json(doc)
+			console.log("sent");
         });
 
   //db.contactlist.insert(req.body, function(err, doc) {
