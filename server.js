@@ -176,16 +176,18 @@ app.get('/contactlist/:id', function (req, res) {
 });
 
 app.put('/contactlist/:id', function (req, res) {
-  var id = req.params.id;
-  console.log("searching for update id: " + req.params.id);
-  contactlist.findOneAndUpdate({ _id : id }, { $set:{ name : req.body.name, email : req.body.email, number : req.body.number}}, {new : true},
-	 function (err, doc) {
-			if (err) {
-				console.log("Couldnt find that id error message : " + err);
-				return;
-			}
-  		res.json(doc);
-  });
+   var id = req.params.id;
+	contactlist.findById(id, function (err, doc) {
+	  if (err){
+	    console.log("error in update");
+		return;
+	  }
+	  doc.name = req.body.name;
+	  doc.email = req.body.email;
+	  doc.number = req.body.number;
+	  //doc.save(callback);
+	  res.json(doc);
+	});
 });
 
 
