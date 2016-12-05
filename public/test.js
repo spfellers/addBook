@@ -8,6 +8,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 var refresh = function() {
 	$http.get('/contactlist').success(function(response) {
 		$scope.contactlist = response;
+		$scope.contact = "";
 		console.log(response);
 	}).error(function(response) {
 		console.log('Error: ' + response);
