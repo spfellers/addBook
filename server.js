@@ -149,7 +149,7 @@ app.post('/contactlist', function (req, res) {
 				if (err)
 					console.log("error", err);
 				res.json(docs);
-				console.log("sent", dosc);
+				console.log("sent", docs);
 			});
         });
 
