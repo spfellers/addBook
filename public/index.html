@@ -34,7 +34,7 @@
           <td><button class="lined thin" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
         </tr>
         <tr ng-repeat="contact in contactlist">
-		<td ng-hide="contact.length">No events</td>
+		<td ng-hide="contactlist.length">No events</td>
           <td>{{contact.name}}</td>
           <td>{{contact.email}}</td>
           <td>{{contact.number}}</td>
