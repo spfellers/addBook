@@ -124,7 +124,7 @@ app.post('/contactlist', function (req, res) {
             if (err)
                 res.send(err);
 			res.json(doc)
-			console.log("sent");
+			console.log("sent", doc);
         });
 
   //db.contactlist.insert(req.body, function(err, doc) {
