@@ -93,7 +93,8 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
     });
 */
 //var contact = {name : String, email : String, number : String} ;
-//var contactlist = mongoose.model('contactlist',  {"name": String ,"email": String ,"number": String} );
+var contactlist = mongoose.model('contactlist',  {"name": String ,"email": String ,"number": String} );
+/*
 var person1 = { name : 'brian',
 				email : 'brian@test.com',
 				number :  '555-555-5555'
@@ -108,6 +109,7 @@ var person3 = { name : 'max',
 	};
 
 var contactlist = [person1, person2, person3];
+*/
 app.get('/contactlist', function (req, res) {
 	console.log("I got the request");
 	res.json(contactlist);
