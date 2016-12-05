@@ -103,16 +103,8 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
 var contactlist = mongoose.model('contactlist', {name : String, email : String, number : String} );
 
 app.get('/contactlist', function (req, res) {
-  console.log('I received a GET request');
-
-  contactlist.find(function (err, users) {
-    var contacts = {};
-		users.forEach(function(user) {
-		  contacts[user._id] = user;
-		});
-		
-    res.send(contacts);
-  });
+	console.log("get request was made");
+	res.send("hello world");
 });
 
 app.post('/contactlist', function (req, res) {
@@ -131,8 +123,8 @@ app.post('/contactlist', function (req, res) {
   }, function(err, doc) {
             if (err)
                 res.send(err);
-			res.json(doc)
-			console.log("sent");
+			//res.json(doc)
+			//console.log("sent");
         });
 
   //db.contactlist.insert(req.body, function(err, doc) {
