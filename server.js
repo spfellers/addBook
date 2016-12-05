@@ -106,6 +106,7 @@ app.get('/contactlist', function (req, res) {
 			console.log("error: ", err);
 		}
 		res.json(list);
+		console.log("sending ", list);
     });
 });
 
