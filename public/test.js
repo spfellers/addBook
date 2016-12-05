@@ -6,7 +6,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     console.log("Hello World from controller");
 
 var refresh = function() {
-	$http.get('/contactlist').success(function(response) {
+	$http.get("/contactlist").success(function(response) {
 		$scope.contactlist = response;
 		$scope.contact = "";
 		console.log("Response = " + response);

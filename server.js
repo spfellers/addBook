@@ -97,7 +97,7 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
 var contact = {name : String, email : String, number : String} ;
 //var contactlist = mongoose.model('contactlist',  {"name": String ,"email": String ,"number": String} );
 
-app.get('/contactlist', function (req, res) {
+app.get("/contactlist", function (req, res) {
 	console.log("I got the request");
 	person1 = { name : "test",
 				email : "test@test.com",
