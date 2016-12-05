@@ -131,7 +131,7 @@ app.post('/contactlist', function (req, res) {
   //  res.json(doc);
   //});
 });
-
+/*
 app.delete('/contactlist/:id', function (req, res) {
   var id = req.params.id;
   console.log(id);
@@ -161,4 +161,4 @@ app.put('/contactlist/:id', function (req, res) {
  // );
 });
 
-
+*/
