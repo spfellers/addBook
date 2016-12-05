@@ -9,7 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
 <script src="test.js"></script>
 
-  <title>Contact List App</title>
+  <title>addBook App</title>
 </head>
 <body>
   <div class="container" ng-controller="AppCtrl">
@@ -20,7 +20,7 @@
         <tr>
           <th>Name</th>         
           <th>Email</th>
-          <th>Number</th>
+          <th>Phone Number</th>
           <th>Action</th>
           <th>&nbsp;</th>
         </tr>
@@ -31,7 +31,7 @@
           <td><input class="form-control" ng-model="contact.email"></td>
           <td><input class="form-control" ng-model="contact.number"></td>
           <td><button class="lined thick" ng-click="addContact()">Add Contact</button></td>
-          <td><button class="lined thin" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+          <td><button class="lined thin" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="lined thin" ng-click="deselect()">Clear</button></td>
         </tr>
         <tr ng-repeat="contact in contactlist">
 		<td ng-hide="contactlist.length">No events</td>
@@ -43,7 +43,10 @@
         </tr>
       </tbody>
     </table>
-
+				<!-- Footer -->
+					<footer id="footer">
+						<p>&copy; addBook. All rights reserved.</p>
+					</footer>
   </div>
 </body>
 </html>
