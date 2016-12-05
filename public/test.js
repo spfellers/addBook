@@ -9,7 +9,6 @@ var refresh = function() {
 	$http.get('/contactlist').success(function(response) {
 		$scope.contactlist = response;
 		$scope.contact = "";
-		$scope.contact.number = response;
 	}).error(function(response) {
 		console.log('Error: ' + response);
 	});
