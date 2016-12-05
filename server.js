@@ -2,11 +2,11 @@
 
 
 
-// Connection URL. This is where your mongodb server is running.
-var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:16990/admin?ssl=true';
+	// Connection URL. This is where your mongodb server is running.
+	var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:16990/admin?ssl=true';
 
 
- // set up ========================
+ 	// set up ========================
     var express  = require('express');
     var app      = express();                               // create our app w/ express
     var mongoose = require('mongoose');                     // mongoose for mongodb
@@ -24,174 +24,90 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
 	var appEnv = cfenv.getAppEnv();
 
 
-    // application -------------------------------------------------------------
+	var contactlist = mongoose.model('contactlist',  {"name": String ,"email": String ,"number": String} );
 
-    // listen (start app with node server.js) ======================================
-
-/*
-
-    // define model =================
-    var Todo = mongoose.model('Todo', {
-        names : String,
-		address : String,
-		phone : String
-    });
-
-// routes ======================================================================
-
-    // api ---------------------------------------------------------------------
-    // get all todos
-    app.get('/api/todos', function(req, res) {
-
-        // use mongoose to get all todos in the database
-        Todo.find(function(err, todos) {
-
-            // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-            if (err)
-                res.send(err)
-
-            res.json(todos); // return all todos in JSON format
-        });
-    });
-
-    // create todo and send back all todos after creation
-    app.post('/api/todos', function(req, res) {
-
-        // create a todo, information comes from AJAX request from Angular
-        Todo.create({
-            names : req.body.text,
-            done : false
-        }, function(err, todo) {
-            if (err)
-                res.send(err);
-
-            // get and return all the todos after you create another
-            Todo.find(function(err, todos) {
-                if (err)
-                    res.send(err)
-                res.json(todos);
-            });
-        });
-
-    });
-
-    // delete a todo
-    app.delete('/api/todos/:todo_id', function(req, res) {
-        Todo.remove({
-            _id : req.params.todo_id
-        }, function(err, todo) {
-            if (err)
-                res.send(err);
-
-            // get and return all the todos after you create another
-            Todo.find(function(err, todos) {
-                if (err)
-                    res.send(err)
-                res.json(todos);
-            });
-        });
-    });
-*/
-//var contact = {name : String, email : String, number : String} ;
-var contactlist = mongoose.model('contactlist',  {"name": String ,"email": String ,"number": String} );
-/*
-var person1 = { name : 'brian',
-				email : 'brian@test.com',
-				number :  '555-555-5555'
-	};
-var person2 = { name : 'sam',
-				email : 'sam@test.com',
-				number :  '666-666-6666'
-	};
-var person3 = { name : 'max',
-				email : 'max@test.com',
-				number :  '777-777-7777'
-	};
-
-var contactlist = [person1, person2, person3];
-*/
-app.get('/contactlist', function (req, res) {
-	console.log("I got the request");
-	contactlist.find(function(err, docs) {
-		if (err)
-			console.log("error", err);
-		res.json(docs);
+	app.get('/contactlist', function (req, res) {
+		console.log("I got the request");
+		contactlist.find(function(err, docs) {
+			if (err)
+				console.log("error", err);
+			res.json(docs);
+		});
 	});
-});
 
-app.post('/contactlist', function (req, res) {
+	app.post('/contactlist', function (req, res) {
 
-  console.log("trying to insert into db: ", req.body);
-  console.log("name: ", req.body.name);
-  console.log("email: ", req.body.email);
-  console.log("number: ", req.body.number);
+	  console.log("trying to insert into db: ", req.body);
+	  console.log("name: ", req.body.name);
+	  console.log("email: ", req.body.email);
+	  console.log("number: ", req.body.number);
 
-  contactlist.create({
-  	name : req.body.name,
+	  contactlist.create({
+	  	name : req.body.name,
 
-    email : req.body.email,
+		email : req.body.email,
 
-	number : req.body.number
+		number : req.body.number
 
-  }, function(err, doc) {
-            if (err){
-                res.send(err);
-				console.log("error: ", err);
+	  }, function(err, doc) {
+		        if (err){
+		            res.send(err);
+					console.log("error: ", err);
+				}
+			res.json(doc);
+	   });
+
+	});
+
+
+
+	app.delete('/contactlist/:id', function (req, res) {
+	  var id = req.params.id;
+	  console.log("delete id = " + id);
+		contactlist.findOne({ _id : id }, function (err, contactlist) {
+			if (err) {
+				console.log("Couldnt find that id");
+				return;
 			}
-		res.json(doc);
-   });
-
-});
-
-
-
-app.delete('/contactlist/:id', function (req, res) {
-  var id = req.params.id;
-  console.log("delete id = " + id);
-	contactlist.findOne({ _id : id }, function (err, contactlist) {
-		if (err) {
-			console.log("Couldnt find that id");
-		    return;
-		}
-		contactlist.remove(function (err) {
-			console.log("removing id: " + id);
-			res.send(id);
-		    // if no error, your model is removed
+			contactlist.remove(function (err) {
+				console.log("removing id: " + id);
+				res.send(id);
+				// if no error, your model is removed
+			});
 		});
 	});
-});
 
 
-app.get('/contactlist/:id', function (req, res) {
-  var id = req.params.id;
-  console.log("searching for edit id: " + req.params.id);
-  console.log("request params: " + req.params);
-  contactlist.findOne({ _id : id }, function (err, docs) {
-		if (err) {
-			console.log("Couldnt find that id");
-		    return;
-		}
-		res.json(docs);
-  });
-});
-
-app.put('/contactlist/:id', function (req, res) {
-   var id = req.params.id;
-	contactlist.findById(id, function (err, doc) {
-	  if (err){
-	    console.log("error in update");
-		return;
-	  }
-	  doc.name = req.body.name;
-	  doc.email = req.body.email;
-	  doc.number = req.body.number;
-	  doc.save(function (err) {
-  		if (err) return console.log(err);
-  		// saved!
-		});
-	  res.json(doc);
+	app.get('/contactlist/:id', function (req, res) {
+	  var id = req.params.id;
+	  console.log("searching for edit id: " + req.params.id);
+	  console.log("request params: " + req.params);
+	  contactlist.findOne({ _id : id }, function (err, docs) {
+			if (err) {
+				console.log("Couldnt find that id");
+				return;
+			}
+			res.json(docs);
+	  });
 	});
-});
+
+	app.put('/contactlist/:id', function (req, res) {
+	   var id = req.params.id;
+		contactlist.findById(id, function (err, doc) {
+		  if (err){
+			console.log("error in update");
+			return;
+		  }
+		  doc.name = req.body.name;
+		  doc.email = req.body.email;
+		  doc.number = req.body.number;
+		  doc.save(function (err) {
+	  		if (err) return console.log(err);
+	  		// saved!
+			});
+		  res.json(doc);
+		});
+	});
 
 
     app.listen(appEnv.port);
