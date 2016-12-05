@@ -3,8 +3,8 @@
 
 var myApp = angular.module('myApp', []);
 myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
-    console.log("Hello World from controller");
 
+//refresh the page, make sure all contacts are loaded, empty the forms
 var refresh = function() {
 	$http.get("/contactlist").success(function(response) {
 		$scope.contactlist = response;
@@ -17,6 +17,7 @@ var refresh = function() {
 
 refresh();
 
+//adding a contact to the list
 $scope.addContact = function() {
   console.log("addcontact - $scope.contact = " + $scope.contact);
   $http.post('/contactlist', $scope.contact).success(function(response) {
@@ -26,7 +27,7 @@ $scope.addContact = function() {
 };
 
 
-
+//removing a contact from the list, specifying id
 $scope.remove = function(id) {
   console.log("$scope remove id = " + id);
   $http.delete('/contactlist/' + id).success(function(response) {
@@ -34,6 +35,7 @@ $scope.remove = function(id) {
   });
 };
 
+//retrieving a contacts id to be compared with later.
 $scope.edit = function(id) {
   console.log("edit id: " + id);
   $http.get('/contactlist/' + id).success(function(response) {
@@ -41,6 +43,7 @@ $scope.edit = function(id) {
   });
 };  
 
+//updating a contact with given id
 $scope.update = function() {
   console.log("update id : " + $scope.contact._id);
   $http.put('/contactlist/' + $scope.contact._id, $scope.contact).success(function(response) {
@@ -48,6 +51,7 @@ $scope.update = function() {
   });
 };
 
+//removing text from forms
 $scope.deselect = function() {
   $scope.contact = "";
 };
