@@ -117,16 +117,6 @@ app.get('/contactlist', function (req, res) {
 			console.log("error", err);
 		res.json(docs);
 	});
-/*
-	contactlist.find(function(err, contactlists) {
-    	if (err){
-        	res.send(err);
-			console.log("error: ", err);
-		}
-		res.json(contactlists);
-		console.log("sending ", contactlists);
-    });
-*/
 });
 
 app.post('/contactlist', function (req, res) {
@@ -148,14 +138,12 @@ app.post('/contactlist', function (req, res) {
                 res.send(err);
 				console.log("error: ", err);
 			}
-			//res.json(doc);
-			//console.log("sent", doc);
+		res.json(doc);
    });
 
-  //db.contactlist.insert(req.body, function(err, doc) {
-  //  res.json(doc);
-  //});
 });
+
+
 /*
 app.delete('/contactlist/:id', function (req, res) {
   var id = req.params.id;
