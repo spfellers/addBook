@@ -5,23 +5,24 @@ var myApp = angular.module('myApp', []);
 myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     console.log("Hello World from controller");
 
-//var refresh = function() {
+var refresh = function() {
 	$http.get('/contactlist').success(function(response) {
 		$scope.contactlist = response;
 		$scope.contact = "";
+		console.log("Response = " + response);
 	}).error(function(response) {
 		console.log('Error: ' + response);
 	});
-//};
+};
 
-//refresh();
+refresh();
 
 $scope.addContact = function() {
   //console.log($scope.contact);
   $http.post('/contactlist', $scope.contact).success(function(response) {
 	console.log("HELLO I AM IN ADDCONTACT");
     //console.log(response);
-    //refresh();
+    refresh();
   });
 };
 
@@ -30,7 +31,7 @@ $scope.addContact = function() {
 $scope.remove = function(id) {
   //console.log(id);
   $http.delete('/contactlist/' + id).success(function(response) {
-    //refresh();
+    refresh();
   });
 };
 /*
@@ -44,7 +45,7 @@ $scope.edit = function(id) {
 $scope.update = function() {
   //console.log($scope.contact._id);
   $http.put('/contactlist/' + $scope.contact._id, $scope.contact).success(function(response) {
-    //refresh();
+    refresh();
   });
 };
 
