@@ -25,9 +25,7 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
 
 
     // application -------------------------------------------------------------
-    app.get('*', function(req, res) {
-        res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-    });
+
     // listen (start app with node server.js) ======================================
 
 /*
@@ -94,14 +92,14 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
         });
     });
 */
-var contact = {name : String, email : String, number : String} ;
+//var contact = {name : String, email : String, number : String} ;
 //var contactlist = mongoose.model('contactlist',  {"name": String ,"email": String ,"number": String} );
 
-app.get("/contactlist", function (req, res) {
+app.get('/contactlist', function (req, res) {
 	console.log("I got the request");
-	person1 = { name : "test",
-				email : "test@test.com",
-				number :  "555-555-5555"
+	person1 = { name : 'test',
+				email : 'test@test.com',
+				number :  '555-555-5555'
 	};
 	var contactlist = [person1];
 	res.json(contactlist);
@@ -176,6 +174,8 @@ app.put('/contactlist/:id', function (req, res) {
 });
 
 */
-
+    app.get('*', function(req, res) {
+        res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    });
     app.listen(appEnv.port);
     console.log("App listening on port ",appEnv.port);
