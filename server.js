@@ -100,13 +100,13 @@ var contactlist = mongoose.model('contactlist',  {"name": String ,"email": Strin
 app.get('/contactlist', function (req, res) {
 	console.log("get request was made");
 	console.log("request = ", req.body);
-	contactlist.find(function(err, list) {
+	contactlist.find(function(err, contactlists) {
     	if (err){
         	res.send(err);
 			console.log("error: ", err);
 		}
-		res.json(list);
-		console.log("sending ", list);
+		res.json(contactlists);
+		console.log("sending ", contactlists);
     });
 });
 
