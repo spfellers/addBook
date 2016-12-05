@@ -5,8 +5,7 @@
   "main"         : "server.js",
   "author"       : "sfellers",
   "scripts": {
-    "start": "node server.js",
-	"mongod"
+    "start": "node mongod server.js"
   },
   "dependencies" : {
     "body-parser"    : "^1.4.3",
