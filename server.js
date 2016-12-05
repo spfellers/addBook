@@ -144,15 +144,25 @@ app.post('/contactlist', function (req, res) {
 });
 
 
-/*
+
 app.delete('/contactlist/:id', function (req, res) {
   var id = req.params.id;
   console.log(id);
   //Entry.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
   //  res.json(doc);
   //});
+
+	contactlist.findOne({ id : id }, function (err, model) {
+		if (err) {
+		    return;
+		}
+		contactlist.remove(function (err) {
+		    // if no error, your model is removed
+		});
+	});
 });
 
+/*
 app.get('/contactlist/:id', function (req, res) {
   var id = req.params.id;
   console.log('I received a GET:ID request');
