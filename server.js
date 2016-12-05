@@ -123,8 +123,8 @@ app.post('/contactlist', function (req, res) {
   }, function(err, doc) {
             if (err)
                 res.send(err);
-			//res.json(doc)
-			//console.log("sent");
+			res.json(doc)
+			console.log("sent");
         });
 
   //db.contactlist.insert(req.body, function(err, doc) {
