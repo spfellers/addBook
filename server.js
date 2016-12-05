@@ -94,14 +94,22 @@ var url = 'mongodb://admin:RADYQZUDBEYHLWVT@sl-us-dal-9-portal.3.dblayer.com:169
 */
 //var contact = {name : String, email : String, number : String} ;
 //var contactlist = mongoose.model('contactlist',  {"name": String ,"email": String ,"number": String} );
-
-app.get('/contactlist', function (req, res) {
-	console.log("I got the request");
-	person1 = { name : 'test',
-				email : 'test@test.com',
+var person1 = { name : 'brian',
+				email : 'brian@test.com',
 				number :  '555-555-5555'
 	};
-	var contactlist = [person1];
+var person2 = { name : 'sam',
+				email : 'sam@test.com',
+				number :  '666-666-6666'
+	};
+var person3 = { name : 'max',
+				email : 'max@test.com',
+				number :  '777-777-7777'
+	};
+
+var contactlist = [person1, person2, person3];
+app.get('/contactlist', function (req, res) {
+	console.log("I got the request");
 	res.json(contactlist);
 /*
 	contactlist.find(function(err, contactlists) {
@@ -116,19 +124,18 @@ app.get('/contactlist', function (req, res) {
 });
 
 app.post('/contactlist', function (req, res) {
+
   console.log("trying to insert into db: ", req.body);
   console.log("name: ", req.body.name);
   console.log("email: ", req.body.email);
   console.log("number: ", req.body.number);
 
-  contactlist.create({ contact: {
+  contactlist.create({
   	name : req.body.name,
 
     email : req.body.email,
 
 	number : req.body.number
-
-	}
 
   }, function(err, doc) {
             if (err){

@@ -21,7 +21,7 @@ $scope.addContact = function() {
   //console.log($scope.contact);
   $http.post('/contactlist', $scope.contact).success(function(response) {
 	console.log("HELLO I AM IN ADDCONTACT");
-    //console.log(response);
+    console.log(response);
     refresh();
   });
 };
