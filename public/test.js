@@ -9,7 +9,7 @@ var refresh = function() {
 	$http.get('/contactlist').success(function(response) {
 		$scope.contactlist = response;
 		$scope.contact = "";
-		$scope.meow = response;
+		$scope.contact = response;
 	}).error(function(response) {
 		console.log('Error: ' + response);
 	});
