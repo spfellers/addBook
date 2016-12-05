@@ -104,6 +104,7 @@ var contactlist = mongoose.model('contactlist', {name : String, email : String, 
 
 app.get('/contactlist', function (req, res) {
 	console.log("get request was made");
+	console.log("request = ", req.body);
 	res.send("hello world");
 });
 
