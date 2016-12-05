@@ -176,8 +176,13 @@ app.get('/contactlist/:id', function (req, res) {
 app.put('/contactlist/:id', function (req, res) {
   var id = req.params.id;
   console.log(req.body.name);
-  contactlist.findOneAndUpdate({_id:id}, req.body, function (err, docs) {
-  	res.send(docs);
+  contactlist.findOneAndUpdate({_id:id}, req.body, 
+		function (err, docs) {
+			if (err) {
+				console.log("Couldnt find that id");
+				return;
+			}
+  			res.json(docs);
   });
 });
 
