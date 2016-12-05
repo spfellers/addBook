@@ -150,9 +150,11 @@ app.delete('/contactlist/:id', function (req, res) {
   console.log("delete id = " + id);
 	contactlist.findOne({ _id : id }, function (err, contactlist) {
 		if (err) {
+			console.log("Couldnt find that id");
 		    return;
 		}
 		contactlist.remove(function (err) {
+			console.log("removing id: " + id);
 		    // if no error, your model is removed
 		});
 	});
