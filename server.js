@@ -106,7 +106,7 @@ app.get('/contactlist', function (req, res) {
   console.log('I received a GET request');
 
   contactlist.find(function (err, docs) {
-    console.log(docs);
+    console.log("we are here", docs);
     res.json(docs);
   });
 });
