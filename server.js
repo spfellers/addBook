@@ -185,8 +185,7 @@ app.put('/contactlist/:id', function (req, res) {
 
 	number : req.body.number
 
-  }}, {new:true}, 
-		function (err, docs) {
+  }}, function (err, docs) {
 			if (err) {
 				console.log("Couldnt find that id");
 				return;
