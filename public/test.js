@@ -10,6 +10,7 @@ var refresh = function() {
   $http.get('/contactlist').success(function(response) {
     console.log("HELLO I AM IN REFRESH");
     $scope.contactlist = response;
+	console.log(response);
     $scope.contact = "";
   });
 };
