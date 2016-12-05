@@ -148,11 +148,8 @@ app.post('/contactlist', function (req, res) {
 app.delete('/contactlist/:id', function (req, res) {
   var id = req.params.id;
   console.log(id);
-  //Entry.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
-  //  res.json(doc);
-  //});
 
-	contactlist.findOne({ id : id }, function (err, model) {
+	contactlist.findOne({ _id : id }, function (err, contactlist) {
 		if (err) {
 		    return;
 		}
