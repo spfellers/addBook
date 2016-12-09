@@ -8,8 +8,8 @@
  - Max Molnar     molnarm@purdue.edu
 
 ## Installation
- - install npm
- - place your MongoDB URI in server.js
- - start using 'node server.js'
+ - Install npm
+ - Place your MongoDB URI in server.js
+ - Start using `node server.js`
 
 ![addBook](http://i.imgur.com/fcWpuZC.png)
